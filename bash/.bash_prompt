@@ -20,7 +20,6 @@ fi
 
 # speedy git prompt
 function parse_git_branch {
-  if [ -d ".git" ]; then
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     branch=${ref#refs/heads/}
 
@@ -32,7 +31,6 @@ function parse_git_branch {
     echo "${branch}"
     # alternative, a bit slower:
     # echo "$(__git_ps1)"
-  fi
 }
 
 # Show return status of previous command in angle brackets, if not zero
