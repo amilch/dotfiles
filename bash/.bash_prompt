@@ -36,7 +36,7 @@ function parse_git_branch {
 # Show return status of previous command in angle brackets, if not zero
 returninfo () {
   if [ $RET != 0 ] ; then
-    echo "<$RET>"
+    echo "<$RET> "
   fi
 }
 PROMPT_COMMAND='RET=$?; '
@@ -47,7 +47,7 @@ PROMPT_DIRTRIM=3
 PROMPT_COMMAND="${PROMPT_COMMAND} history -a"
 
 prompt_on () {
-  PS1="\[${color_red}\]\$(returninfo)\[${normal}\]${userhost}:\w \[${bold}\]\$(parse_git_branch)\[${normal}\]\$ "
+  PS1="\[${color_red}\]\$(returninfo)\[${normal}\][${userhost} \w \[${bold}\]\$(parse_git_branch)\[${normal}\]] \$ "
 }
 prompt_off () {
   PS1="\$"
