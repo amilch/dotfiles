@@ -34,5 +34,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Swap Caps Lock and Escape key
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' -e 'keycode 0x09=Caps_Lock'
+
 # promt is in separate file
 source ~/.bash_prompt
