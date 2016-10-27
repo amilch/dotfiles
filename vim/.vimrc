@@ -66,8 +66,8 @@ let mapleader=","
 vnoremap <C-c> "*y
 noremap <leader>d :NERDTreeToggle<CR>
 "Windows
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>q <C-w>s<C-w>j
+nnoremap <leader>h <C-w>v<C-w>l
+nnoremap <leader>j <C-w>s<C-w>j
 nnoremap <C-h> <C-w>h
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
