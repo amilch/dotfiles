@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jacoborus/tender'
-Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
@@ -17,14 +16,20 @@ filetype plugin indent on
 set ttyfast
 syntax enable
 set number
-set cursorline
 set showmatch
 "Colorscheme: Tender
 if (has("termguicolors"))
     set termguicolors
 endif
 colorscheme tender
-let g:lightline = { 'colorscheme': 'tender' }
+set laststatus=0
+
+"Cursorline
+augroup CursorLine
+  au!
+  au InsertEnter * setlocal cursorline
+  au InsertLeave * setlocal nocursorline
+augroup END
 
 "Folds
 set foldenable
@@ -60,11 +65,13 @@ set nobackup
 set history=10
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.o
+set backspace=indent,eol,start
 
 "Keybindings
 let mapleader=","
 vnoremap <C-c> "*y
 noremap <leader>d :NERDTreeToggle<CR>
+nnoremap <backspace> <NOP>
 "Windows
 nnoremap <leader>h <C-w>v<C-w>l
 nnoremap <leader>j <C-w>s<C-w>j
