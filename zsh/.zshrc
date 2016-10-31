@@ -7,3 +7,6 @@ if ! zgen saved; then
   zgen load mgee/slimline
   zgen save
 fi
+
+SLIMLINE_SSH_INFO_USER_COLOR=white
+SLIMLINE_SSH_INFO_HOST_COLOR=white
