@@ -16,7 +16,6 @@ filetype plugin indent on
 set ttyfast
 syntax enable
 set number
-set showmatch
 "Colorscheme: Tender
 if (has("termguicolors"))
     set termguicolors
