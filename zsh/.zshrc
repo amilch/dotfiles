@@ -9,6 +9,7 @@ if ! zgen saved; then
 fi
 
 [ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
+source "${HOME}/.aliases"
 
 SLIMLINE_SSH_INFO_USER_COLOR=white
 SLIMLINE_SSH_INFO_HOST_COLOR=white
