@@ -83,5 +83,6 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 
 "Pandoc
+let g:pandoc#modules#disabled = ["spell"]
 let g:pandoc#folding#fdc = 0
 let g:pandoc#syntax#conceal#use = 0

@@ -1,1 +1,4 @@
 alias open=xdg-open
+md2pdf() {
+    pandoc --smart --filter pandoc-citeproc -o ${1%.*}.pdf $1
+}
