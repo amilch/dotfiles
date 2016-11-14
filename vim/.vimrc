@@ -68,6 +68,8 @@ set history=10
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.o
 set backspace=indent,eol,start
+set clipboard^=unnamed,unnamedplus "Use system clipboard
+nnoremap d "_d
 
 "Keybindings
 let mapleader=","
