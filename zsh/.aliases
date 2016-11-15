@@ -1,4 +1,4 @@
 alias open=xdg-open
 md2pdf() {
-    pandoc --smart --filter pandoc-citeproc -o ${1%.*}.pdf $1
+    pandoc --smart --filter pandoc-citeproc -f markdown+tex_math_double_backslash -o ${1%.*}.pdf $1
 }
