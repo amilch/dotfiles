@@ -11,10 +11,11 @@ fi
 [ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 source "${HOME}/.aliases"
 
+#TERM=xterm-256color
+stty erase '^?'
+
 SLIMLINE_SSH_INFO_USER_COLOR=white
 SLIMLINE_SSH_INFO_HOST_COLOR=white
-
-TERM=xterm-256color
 
 bindkey '\e[1~'   beginning-of-line  # Linux console
 bindkey '\e[H'    beginning-of-line  # xterm

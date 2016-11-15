@@ -7,3 +7,4 @@ ln -sfv ${BASEDIR}/tmux/.tmux.conf ~/.tmux.conf
 ln -sfv ${BASEDIR}/fish/config.fish ~/.config/fish/config.fish
 ln -sfv ${BASEDIR}/zsh/.zshrc ~/.zshrc
 ln -sfv ${BASEDIR}/zsh/.aliases ~/.aliases
+ln -sfv ${BASEDIR}/X/.Xresources ~/.Xresources
