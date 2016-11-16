@@ -12,9 +12,9 @@ xterm*scrollBar: false
 xterm*ScrollKey: true
 xterm*visualbell: false
 !Bold makes text lighter and not fat
-xterm*boldMode: false
-xterm*colorBDMode: true
-xterm*colorBD: rgb:fc/fc/fc
+!xterm*boldMode: false
+!xterm*colorBDMode: true
+!xterm*colorBD: rgb:fc/fc/fc
 
 ! Colorscheme base16-xresources
 
