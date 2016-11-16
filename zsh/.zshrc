@@ -13,6 +13,7 @@ source "${HOME}/.aliases"
 
 #TERM=xterm-256color
 stty erase '^?'
+eval `dircolors ${HOME}/.dircolors`
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
