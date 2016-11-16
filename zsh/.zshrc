@@ -14,8 +14,13 @@ source "${HOME}/.aliases"
 #TERM=xterm-256color
 stty erase '^?'
 
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
 SLIMLINE_SSH_INFO_USER_COLOR=white
 SLIMLINE_SSH_INFO_HOST_COLOR=white
+export SLIMLINE_GIT_REPO_INDICATOR='git'
+export SLIMLINE_GIT_BRANCH='[%F{blue}${branch}%f]'
 
 bindkey '\e[1~'   beginning-of-line  # Linux console
 bindkey '\e[H'    beginning-of-line  # xterm

@@ -7,7 +7,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jacoborus/tender'
+"Plugin 'jacoborus/tender'
+Plugin 'chriskempson/base16-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -19,12 +20,13 @@ filetype plugin indent on
 set ttyfast
 syntax enable
 set number
-"Colorscheme: Tender
-if (has("termguicolors"))
-    set termguicolors
-endif
-colorscheme tender
 set laststatus=0
+"Colorscheme: Base16
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+highlight LineNr ctermbg=NONE
 
 "Cursorline
 augroup CursorLine
