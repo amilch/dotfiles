@@ -12,3 +12,4 @@ ln -sfv ${BASEDIR}/X/.Xresources ~/.Xresources
 ln -sfv ${BASEDIR}/X/.xsession ~/.xsession
 
 xrdb -merge ~/.Xresources
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
