@@ -11,6 +11,9 @@ fi
 [ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
 source "${HOME}/.aliases"
 
+#X Stuff, shouldn't really be here!
+xrdb -merge $HOME/.Xresources
+
 #TERM=xterm-256color
 stty erase '^?'
 eval `dircolors ${HOME}/.dircolors`
