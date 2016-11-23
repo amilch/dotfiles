@@ -1,4 +1,5 @@
 alias open=xdg-open
+alias starwars="telnet towel.blinkenlights.nl"
 md2pdf() {
     pandoc --smart --filter pandoc-citeproc -f markdown+tex_math_double_backslash -o ${1%.*}.pdf $1
 }

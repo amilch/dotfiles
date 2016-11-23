@@ -9,7 +9,7 @@ ln -sfv ${BASEDIR}/zsh/.zshrc ~/.zshrc
 ln -sfv ${BASEDIR}/zsh/.aliases ~/.aliases
 ln -sfv ${BASEDIR}/zsh/.dircolors ~/.dircolors
 ln -sfv ${BASEDIR}/X/.Xresources ~/.Xresources
-ln -sfv ${BASEDIR}/X/.xsession ~/.xsession
 
 xrdb -merge ~/.Xresources
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
