@@ -86,6 +86,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 
+"Window Title
+autocmd BufEnter * let &titlestring = "vim | " . expand("%:t")
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
+autocmd VimLeave * call system("tmux setw automatic-rename")
+
 "Pandoc
 let g:pandoc#modules#disabled = ["spell"]
 let g:pandoc#folding#fdc = 0
