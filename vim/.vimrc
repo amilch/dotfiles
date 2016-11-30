@@ -73,6 +73,10 @@ set backspace=indent,eol,start
 set clipboard^=unnamed,unnamedplus "Use system clipboard
 nnoremap d "_d
 
+"Window Titles
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
+autocmd VimLeave * call system("tmux rename-window 'tmux'")
+
 "Keybindings
 let mapleader=","
 vnoremap <C-c> "*y
