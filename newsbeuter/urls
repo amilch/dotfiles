@@ -1,0 +1,71 @@
+#infosec blogs
+http://krebsonsecurity.com/feed/ daily
+https://www.schneier.com/blog/atom.xml daily
+https://www.grahamcluley.com/feed/ daily
+http://www.theregister.co.uk/security/headlines.atom noisy
+https://nakedsecurity.sophos.com/feed/ daily
+https://events.ccc.de/feed/ daily
+https://netzpolitik.org/feed daily
+https://zedshaw.com/category/programming/feed/ daily
+https://threatpost.com/feed/ noisy
+https://feeds.feedburner.com/TheHackersNews?format=xml daily
+http://feeds.arstechnica.com/arstechnica/security?format=xml daily
+https://www.wired.com/category/threatlevel/feed/ daily
+https://labsblog.f-secure.com/feed/ noisy
+https://feeds.feedburner.com/TroyHunt daily
+https://www.symantec.com/connect/item-feeds/blog/691,2261/feed/all/en/all daily
+http://daveshackleford.com/?feed=rss2 daily
+http://blog.erratasec.com/feeds/posts/default daily
+http://www.darkoperator.com/?format=rss daily
+https://medium.com/feed/@thegrugq/ daily
+https://medium.com/feed/@kshortridge daily
+https://medium.com/feed/@againsthimself daily
+https://bitquark.co.uk/blog/feed.rss daily
+https://www.arneswinnen.net/feed/ daily
+https://tisiphone.net/feed/ daily
+https://hackaday.com/category/security-hacks/feed/ daily
+https://hackaday.com/category/internet-hacks/feed/ daily
+https://nebelwelt.net/blog/feeds/all.atom.xml daily
+http://www.netragard.com/blog/feed daily
+https://www.eff.org/rss/updates.xml daily
+http://risky.biz/rss.xml daily
+https://dankaminsky.com/feed/ daily
+https://www.veracode.com/blog/feed daily "~Veracode"
+https://feeds.feedburner.com/darknethackers daily
+https://www.helpnetsecurity.com/insecuremag-archive/feed/ daily
+http://seclists.org/rss/dailydave.rss daily
+https://isc.sans.edu/rssfeed.xml daily
+https://feeds.feedburner.com/oreilly/radar/atom daily
+http://www.bleepingcomputer.com/feed/ daily
+https://www.heise.de/security/news/news-atom.xml daily
+https://www.heise.de/thema/Linux-und-Open-Source?view=atom daily
+https://sanctum.geek.nz/arabesque/feed/ daily
+http://blog.z3bra.org/rss/feed.xml daily
+https://scarybeastsecurity.blogspot.com/feeds/posts/default daily "~scarybeastsecurity"
+https://foxglovesecurity.com/feed/ daily "~foxglovesecurity"
+https://community.rapid7.com/community/infosec/blog/feeds/posts daily
+https://tacticaltech.org/rss.xml daily "~Tactical Tech"
+https://www.theengineroom.org/blog/feed/ daily
+https://feeds.feedburner.com/positiveTechnologiesResearchLab?format=xml daily
+http://andrewmohawk.com/feed/ daily
+https://pig-monkey.com/feed daily
+
+#products
+https://www.qubes-os.org/feed.xml products
+https://blog.xenproject.org/feed/ products
+https://tails.boum.org/news/index.en.rss products
+https://blog.torproject.org/blog/feed products
+https://www.whonix.org/blog/feed products
+https://www.systemli.org/en/atom.xml products
+https://cavallette.noblogs.org/feed products
+https://www.debian.org/security/dsa-long products
+https://www.debian.org/News/news products
+https://fedoramagazine.org/feed/ products
+https://wordpress.org/news/category/security/feed/ products "~Wordpress Security Advisory"
+https://www.cvedetails.com/vulnerability-feed.php?vendor_id=10048&product_id=0&version_id=0&orderby=3&cvssscoremin=0 products
+https://www.cvedetails.com/vulnerability-feed.php?vendor_id=10210&product_id=0&version_id=0&orderby=3&cvssscoremin=0 products
+https://technet.microsoft.com/en-us/security/rss/comprehensive/ products
+https://mullvad.net/blog/feed/rss products
+https://community.rapid7.com/community/metasploit/blog/feeds/posts daily
+https://l3net.wordpress.com/feed/ products
+https://blog.mozilla.org/security/feed/ products

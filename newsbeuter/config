@@ -1,0 +1,51 @@
+# keybindings
+
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
+bind-key j down tagselection
+bind-key k up tagselection
+bind-key j down urlview
+bind-key k up urlview
+bind-key j down help
+bind-key k up help
+bind-key O open-in-browser-and-mark-read
+
+# base16_default-dark colorscheme
+
+color background            default     default
+color listnormal            color8      default
+color listfocus             color6      default
+color listnormal_unread     default     default
+color listfocus_unread      color6      default
+color info                  color8      black
+color article               default     default
+
+highlight article     "^Title:.*"       color6  default
+
+# reload and notify
+auto-reload yes
+reload-threads 4
+download-retries 4
+notify-screen yes
+notify-xterm yes
+
+# misc display & behaviour
+
+#goto-next-feed no
+#show-read-articles no
+show-read-feeds no
+browser "sh -c 'exec firefox %u 2>&1 > /dev/null' &"
+# in about:config set 'browser.tabs.loadDivertedInBackground' to 'true'
+#browser elinks
+text-width 80
+
+article-sort-order date-dec
+feed-sort-order title-dec
+feedlist-format "%S%n %11u %t"
+articlelist-format "%D %f %?T?;%-17T; ?%t"
