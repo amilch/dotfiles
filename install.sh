@@ -53,3 +53,6 @@ safe_link ${BASEDIR}/i3/i3status ~/.i3/i3status
 
 # compton
 safe_link ${BASEDIR}/compton/compton.config ~/.config/compton.config
+
+# gdb
+safe_link ${BASEDIR}/gdb/.gdbinit ~/.gdbinit
