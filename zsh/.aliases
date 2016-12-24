@@ -11,9 +11,12 @@ alias speedtest='wget http://speedtest.tele2.net/100MB.zip -O /dev/null'
 # New functions
 
 alias ports='netstat -tulanp'
+
 md2pdf() {
     pandoc --smart --filter pandoc-citeproc -f markdown+tex_math_double_backslash -o ${1%.*}.pdf $1
 }
+
+alias diceware='curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | shuf -n 6 -r --random-source /dev/random'
 
 # USB Protection
 
