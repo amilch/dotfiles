@@ -10,7 +10,7 @@ function zle-line-init zle-keymap-select {
 	if [[ -n "$SSH_TTY" ]]; then
 		PROMPT+="%n@%m "
 	fi
-	PROMPT="%F{cyan}%(5~|.../%3~|%~)%f ∙ "
+	PROMPT+="%F{cyan}%(5~|.../%3~|%~)%f ∙ "
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_} $EPS1"
     zle reset-prompt
