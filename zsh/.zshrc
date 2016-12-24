@@ -69,10 +69,10 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '%F{red}●%f'
-zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
-zstyle ':vcs_info:*' formats '%u %c [%F{cyan}%b%f]'
-zstyle ':vcs_info:*' actionformats '%u %c [%F{cyan}%a | %m%f]'
+zstyle ':vcs_info:*' unstagedstr '%F{red}∙%f'
+zstyle ':vcs_info:*' stagedstr '%F{green}∙%f'
+zstyle ':vcs_info:*' formats '%u%c [%F{cyan}%b%f]'
+zstyle ':vcs_info:*' actionformats '%u%c [%F{cyan}%a | %m%f]'
 zstyle ':vcs_info:git:*' patch-format '%10>...>%p%<< (%n applied)'
 
 zstyle ':vcs_info:git+post-backend:*' hooks git-remote-staged
