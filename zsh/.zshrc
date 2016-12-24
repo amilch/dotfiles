@@ -5,6 +5,7 @@ source "${HOME}/.aliases"
 # Prompt
 setopt PROMPT_SUBST
 
+RPROMPT=""
 function zle-line-init zle-keymap-select {
 	PROMPT=""
 	if [[ -n "$SSH_TTY" ]]; then
@@ -12,7 +13,7 @@ function zle-line-init zle-keymap-select {
 	fi
 	PROMPT+="%F{cyan}%(5~|.../%3~|%~)%f ∙ "
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_} $EPS1"
+    RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_} $EPS1"
     zle reset-prompt
 }
 
@@ -42,12 +43,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
-
-# Commandline
-SLIMLINE_SSH_INFO_USER_COLOR=white
-SLIMLINE_SSH_INFO_HOST_COLOR=white
-export SLIMLINE_GIT_REPO_INDICATOR='git'
-export SLIMLINE_GIT_BRANCH='[%F{cyan}${branch}%f]'
 
 # Different fixes for home key etc.
 bindkey '\e[1~'   beginning-of-line  # Linux console
