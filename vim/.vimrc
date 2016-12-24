@@ -1,11 +1,9 @@
 set nocompatible
 set modelines=0
-filetype off
 
 "Plugins
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'tpope/vim-surround'
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 "Plugin 'vim-pandoc/vim-pandoc'
 "Plugin 'vim-pandoc/vim-pandoc-syntax'
 filetype plugin indent on
@@ -62,8 +60,8 @@ set history=10
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.o
 set backspace=indent,eol,start
-nnoremap p "+p              "Clipboard
-nnoremap y "+y
+"nnoremap p "*p
+"nnoremap y "+y
 
 "Window Titles
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
@@ -87,7 +85,11 @@ autocmd BufEnter * let &titlestring = "vim | " . expand("%:t")
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
 autocmd VimLeave * call system("tmux setw automatic-rename")
 
+"nerdcommenter
+let g:NERDSpaceDelims = 1
+
 "Pandoc
 let g:pandoc#modules#disabled = ["spell"]
 let g:pandoc#folding#fdc = 0
 let g:pandoc#syntax#conceal#use = 0
+

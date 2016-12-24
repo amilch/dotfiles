@@ -17,6 +17,12 @@ safe_link ${BASEDIR}/vim/.vimrc ~/.vimrc
 safe_link ${BASEDIR}/vim/colors/dracula.vim ~/.vim/colors/dracula.vim
 safe_link ${BASEDIR}/vim/colors/molokai.vim ~/.vim/colors/molokai.vim
 
+# vim plugins
+mkdir -p ~/.vim/bundle
+safe_link ${BASEDIR}/vim/bundle/vim-pathogen ~/.vim/bundle/vim-pathogen
+safe_link ${BASEDIR}/vim/bundle/vim-surround ~/.vim/bundle/vim-surround
+safe_link ${BASEDIR}/vim/bundle/nerdcommenter ~/.vim/bundle/nerdcommenter
+
 # tmux
 safe_link ${BASEDIR}/tmux/.tmux.conf ~/.tmux.conf
 
