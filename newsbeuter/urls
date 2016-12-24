@@ -1,3 +1,6 @@
+#query feeds
+"query:-- Unread Articles --:unread = \"yes\""
+
 #infosec blogs
 http://krebsonsecurity.com/feed/ daily
 https://www.schneier.com/blog/atom.xml daily
@@ -35,7 +38,6 @@ https://feeds.feedburner.com/darknethackers daily
 https://www.helpnetsecurity.com/insecuremag-archive/feed/ daily
 http://seclists.org/rss/dailydave.rss daily
 https://isc.sans.edu/rssfeed.xml daily
-https://feeds.feedburner.com/oreilly/radar/atom daily
 http://www.bleepingcomputer.com/feed/ daily
 https://www.heise.de/security/news/news-atom.xml daily
 https://www.heise.de/thema/Linux-und-Open-Source?view=atom daily
@@ -49,6 +51,7 @@ https://www.theengineroom.org/blog/feed/ daily
 https://feeds.feedburner.com/positiveTechnologiesResearchLab?format=xml daily
 http://andrewmohawk.com/feed/ daily
 https://pig-monkey.com/feed daily
+https://lwn.net/headlines/rss
 
 #products
 https://www.qubes-os.org/feed.xml products
@@ -69,3 +72,4 @@ https://mullvad.net/blog/feed/rss products
 https://community.rapid7.com/community/metasploit/blog/feeds/posts daily
 https://l3net.wordpress.com/feed/ products
 https://blog.mozilla.org/security/feed/ products
+https://coreos.com/atom.xml

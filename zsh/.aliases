@@ -1,5 +1,67 @@
+#!/bin/zsh
+alias ls="command ls -h --color"
 alias open=xdg-open
 alias starwars="telnet towel.blinkenlights.nl"
+alias bc='bc -l'
+alias mount='mount | column -t'
+alias df='df -h'
+alias wget='wget --continue'
+alias speedtest='wget http://speedtest.tele2.net/100MB.zip -O /dev/null'
+
+# New functions
+
+alias ports='netstat -tulanp'
 md2pdf() {
     pandoc --smart --filter pandoc-citeproc -f markdown+tex_math_double_backslash -o ${1%.*}.pdf $1
 }
+
+# USB Protection
+
+alias lock_usb="sudo sh -c \"sed -i 's/#//' /etc/udev/rules.d/10-usbblock.rules; udevadm control --reload-rules\""
+alias unlock_usb="sudo sh -c \"sed -i 's/^/#/' /etc/udev/rules.d/10-usbblock.rules; udevadm control --reload-rules\""
+
+# Color effects :D
+
+netstat() {
+    /bin/netstat $* | sed "s/Proto.*/`tput setaf 6`&`tput op`/ ; s/LISTEN/`tput setaf 1`&`tput op`/"
+}
+
+df() {
+    /bin/df $* | sed -r "1 s/.*/`tput setaf 6`&`tput op`/; s/^[a-z]+.*/`tput dim`&`tput sgr0`/"
+}
+
+# Color test
+
+colortest() {
+    local bg=$(xrdb -query | sed -n '/.*xterm\*background/p' | cut -f2)
+    local fg=$(xrdb -query | sed -n '/.*xterm\*foreground/p' | cut -f2)
+    local colors=$(xrdb -query | sed -n 's/.*xterm\*color\([0-9]\)/\1/p' | sort -nu | cut -f2)
+    
+    echo -e "\033[0mNC (No color)"
+    echo -e "\033[1;37mWHITE\t${fg}\t\033[0;30mBLACK"
+    echo -e "\033[0;31mRED\t`echo $colors | sed -n 2p`\t\033[1;31mLIGHT_RED"
+    echo -e "\033[0;32mGREEN\t`echo $colors | sed -n 3p`\t\033[1;32mLIGHT_GREEN"
+    echo -e "\033[0;34mBLUE\t`echo $colors | sed -n 4p`\t\033[1;34mLIGHT_BLUE"
+    echo -e "\033[0;35mPURPLE\t`echo $colors | sed -n 6p`\t\033[1;35mLIGHT_PURPLE"
+    echo -e "\033[0;36mCYAN\t`echo $colors | sed -n 7p`\t\033[1;36mLIGHT_CYAN"
+    echo -e "\033[0;33mYELLOW\t`echo $colors | sed -n 8p`\t\033[1;33mLIGHT_YELLOW"
+    echo -e "\033[1;30mGRAY\t`echo $colors | sed -n 9p`\t\033[0;37mLIGHT_GRAY"
+}
+
+# Temp Shortcuts
+
+alias signal="firejail --private=~/.chromium-apps/signal /usr/bin/chromium --app-id=bikioccmkafdpakkkcpdbppfkghcmihk"
+alias telegram="firejail --private=~/.chromium-apps/telegram /usr/bin/chromium --app=https://web.telegram.org/#/login"
+alias whatsapp="firejail --private=~/.chromium-apps/whatsapp /usr/bin/chromium --app=https://web.whatsapp.com"
+alias firefox="firejail --private=~/jail/web firefox"
+alias chromium="firejail --private=~/jail/web chromium"
+
+whonix() {
+    virsh -c qemu:///system start Whonix-Workstation
+    virsh -c qemu:///system start Whonix-Gateway
+    i3-msg 'workspace Tor; exec virt-viewer -c qemu:///system Whonix-Workstation; exec virt-viewer -c qemu:///system Whonix-Gateway'
+    }
+
+# docker
+
+alias at91-dev='sudo docker run -i -v $(pwd):/code --net=host -t at91-dev'

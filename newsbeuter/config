@@ -15,6 +15,7 @@ bind-key k up urlview
 bind-key j down help
 bind-key k up help
 bind-key O open-in-browser-and-mark-read
+bind-key r toggle-article-read
 
 # base16_default-dark colorscheme
 
@@ -29,7 +30,7 @@ color article               default     default
 highlight article     "^Title:.*"       color6  default
 
 # reload and notify
-auto-reload yes
+# auto-reload yes
 reload-threads 4
 download-retries 4
 notify-screen yes
@@ -39,8 +40,8 @@ notify-xterm yes
 
 #goto-next-feed no
 #show-read-articles no
-show-read-feeds no
-browser "sh -c 'exec firefox %u 2>&1 > /dev/null' &"
+show-read-feeds yes
+browser "sh -c 'firejail --private=~/jail/web chromium %u &' >/dev/null 2>&1"
 # in about:config set 'browser.tabs.loadDivertedInBackground' to 'true'
 #browser elinks
 text-width 80
