@@ -35,11 +35,11 @@ xterm*colorBD: rgb:fc/fc/fc
 *xterm*color1: red
 *xterm*color2: green
 *xterm*color3: #c47f2c
-*xterm*color4: #30309b
+*xterm*color4: blue
 *xterm*color5: purple
 *xterm*color6: cyan
 *xterm*color7: #9999aa
-*xterm*color8: #303030
+*xterm*color8: #808080
 *xterm*color9: #ff0090
 *xterm*color10: #80ff00
 *xterm*color11: #ffba68
