@@ -1,45 +1,6 @@
-# load slimlin
-# source "${HOME}/.zsh/plugins/slimline/slimline.zsh"
-
-# Load version control information
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '!'
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' formats '%u%c [%F{cyan}%b%f]'
-zstyle ':vcs_info:*' actionformats '%u%c [%F{cyan}%a | %m%f]'
-zstyle ':vcs_info:git:*' patch-format '%10>...>%p%<< (%n applied)'
-
-zstyle ':vcs_info:git+post-backend:*' hooks git-remote-staged
-function +vi-git-remote-staged() {
-  # Show "unstaged" when changes are not staged or not committed
-  # Show "staged" when last committed is not pushed
-  #
-  # See original VCS_INFO_get_data_git for implementation details
-
-  # Set "unstaged" when git reports either staged or unstaged changes
-  if (( gitstaged || gitunstaged )) ; then
-    gitunstaged=1
-  fi
-
-  # Set "staged" when current HEAD is not present in the remote branch
-  if (( querystaged )) && \
-     [[ "$(${vcs_comm[cmd]} rev-parse --is-inside-work-tree 2> /dev/null)" == 'true' ]] ; then
-      # Default: off - these are potentially expensive on big repositories
-      if ${vcs_comm[cmd]} rev-parse --quiet --verify HEAD &> /dev/null ; then
-          gitstaged=1
-          if ${vcs_comm[cmd]} branch -r --contains 2> /dev/null | read REPLY ; then
-            gitstaged=
-          fi
-      fi
-  fi
-
-  hook_com[staged]=$gitstaged
-  hook_com[unstaged]=$gitunstaged
-}
+# load other scripts
+[ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
+source "${HOME}/.aliases"
 
 # Prompt
 setopt PROMPT_SUBST
@@ -57,10 +18,6 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-# load other scripts
-[ -f "${HOME}/.zshrc_local" ] && source "${HOME}/.zshrc_local"
-source "${HOME}/.aliases"
 
 # Colors
 stty erase '^?'
@@ -105,3 +62,43 @@ bindkey '\eOF'    end-of-line        # gnome-terminal
 # VIM mode
 bindkey -v
 export KEYTIMEOUT=1
+
+# Load version control information
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '%F{red}●%f'
+zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
+zstyle ':vcs_info:*' formats '%u %c [%F{cyan}%b%f]'
+zstyle ':vcs_info:*' actionformats '%u %c [%F{cyan}%a | %m%f]'
+zstyle ':vcs_info:git:*' patch-format '%10>...>%p%<< (%n applied)'
+
+zstyle ':vcs_info:git+post-backend:*' hooks git-remote-staged
+function +vi-git-remote-staged() {
+  # Show "unstaged" when changes are not staged or not committed
+  # Show "staged" when last committed is not pushed
+  #
+  # See original VCS_INFO_get_data_git for implementation details
+
+  # Set "unstaged" when git reports either staged or unstaged changes
+  if (( gitstaged || gitunstaged )) ; then
+    gitunstaged=1
+  fi
+
+  # Set "staged" when current HEAD is not present in the remote branch
+  if (( querystaged )) && \
+     [[ "$(${vcs_comm[cmd]} rev-parse --is-inside-work-tree 2> /dev/null)" == 'true' ]] ; then
+      # Default: off - these are potentially expensive on big repositories
+      if ${vcs_comm[cmd]} rev-parse --quiet --verify HEAD &> /dev/null ; then
+          gitstaged=1
+          if ${vcs_comm[cmd]} branch -r --contains 2> /dev/null | read REPLY ; then
+            gitstaged=
+          fi
+      fi
+  fi
+
+  hook_com[staged]=$gitstaged
+  hook_com[unstaged]=$gitunstaged
+}

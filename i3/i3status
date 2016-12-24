@@ -1,0 +1,150 @@
+#!/bin/bash
+
+json() {
+    if [[ ! -z "$1" ]]; then
+        if [[ -n "$3" ]]; then
+            echo -n "{\"name\":\"$1\",\"color\":\"$3\",\"full_text\":\"$2\"},"
+        else
+            echo -n "{\"name\":\"$1\",\"full_text\":\"$2\"},"
+        fi
+    fi
+}
+
+status_time() {
+    local time=$(date '+%d. %b %H:%M')
+    echo -n "{\"name\":\"time\",\"full_text\":\"  $time\"}" # last entry
+}
+
+status_bat() {
+    local accum_now=0;
+    local accum_full=0;
+
+    for battery in /sys/class/power_supply/BAT*; do
+        accum_now=$((accum_now + $(cat $battery/energy_now)))
+        accum_full=$((accum_full + $(cat $battery/energy_full)))
+    done
+    local bat=$((100*accum_now/accum_full))
+
+    local icon=''
+    local color=''
+    if [[ $(cat /sys/class/power_supply/AC/online) == '1' ]]; then
+	icon=''
+	if ((bat == 100)); then
+		bat=''
+	fi
+    elif ((bat < 25)); then
+        color='#d99898'
+	icon=''
+    elif ((bat < 50)); then
+	icon=''
+    fi
+
+    if [[ ! -z "$bat" ]]; then
+	bat="  ${bat}%"
+    fi
+    json bat "$icon$bat" "$color"
+}
+
+status_load() {
+    local load=$(uptime)
+    load=${load/#*load average: }
+    load=${load%,*,*}
+    json load "  $load"
+}
+
+status_disk() {
+    local disk=`df -h / | tail -n 1 | awk '{print $4}'`
+    local disk_num=`echo $disk | sed -n 's/\([0-9]*\).*/\1/p'`
+    disk="  $disk"
+    color="#ff0090"
+    if (( disk_num > 50 )); then
+        disk=""
+    fi
+    json disk "$disk" "$color"
+}
+
+status_tor() {
+    local tor=`systemctl status tor | grep Active: | sed -E "s/.*Active: (.*) since.*/\1/"`
+    local out=""
+    local color=""
+    if  [[ $tor == "active (exited)" ]]; then
+        color=""
+    else
+        out="Tor is down!"
+        color="#ff0090"
+    fi
+    json tor " $out" "$color"
+}
+
+status_mac() {
+    local mac=`macchanger -s wlan1 | grep Current | sed -E "s/Current MAC: *([0-9:a-z]+).*/\1/"`
+    json mac "$mac"
+}
+
+status_apt() {
+    local security_updates=$(apt-get upgrade -s | grep security | wc -l)
+    local all_updates=$(apt-get upgrade -s | sed -n -r 's/.*([0-9]+) not upgraded./\1/p')
+
+    local out=""
+    local color=""
+    if (( 0 < security_updates)); then
+        color="#ff0090"
+    elif (( 0 < all_updates)); then
+        color="#80ff00"
+    else
+        out=""
+        color=""
+    fi
+
+    json apt "$out" "$color"
+}
+
+status_vpn() {
+    local ip=`curl whatismyip.akamai.com`
+    local out=""
+    local color=""
+    if [[ "$ip" =~ ^185.65.132.[0-9]{3} ]]; then
+        color=""
+    else
+        out="VPN is down!"
+        color="#ff0090"
+    fi
+    json vpn "$out" "$color"
+}
+
+status_rss() {
+    local unread=`newsbeuter -x print-unread | cut -d' ' -f1`
+    local out=""
+    if (( unread != 0 )); then
+        out=" $unread"
+    fi
+    json rss "$out"
+}
+
+status_gateway() {
+    local ip=`netstat -r -n | sed -n -r '/tun_vpn/! s/^0.0.0.0 *([0-9.]+).*/\1/p'`
+    json gateway "$ip" "#505050"
+}
+
+main() {
+    echo '{"version":1, "click_events":true}'
+    echo '['
+    echo '[]'
+    local n
+    for ((n=0; ; ++n)); do
+        if (( n % 10 == 0 )); then
+            local disk=$(status_disk)
+            local bat=$(status_bat)
+            local tor=$(status_tor)
+            local apt=$(status_apt)
+            local vpn=$(status_vpn)
+            local rss=$(status_rss)
+            local gateway=$(status_gateway)
+        fi
+        local time=$(status_time)
+        echo ",[$gateway$rss$apt$vpn$tor$disk$bat$time]"
+        sleep 1
+    done
+}
+
+main

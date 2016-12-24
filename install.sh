@@ -2,34 +2,48 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+safe_link () {
+    # Makes a backup of the destination file, if it was no link
+    if [[ -L $2 ]]; then
+        ln -sfv $1 $2
+    else
+        ln -sfvb $1 $2
+    fi
+}
+
 # vim
 mkdir -p ~/.vim/colors
-ln -sfv ${BASEDIR}/vim/.vimrc ~/.vimrc
-ln -sfv ${BASEDIR}/vim/colors/dracula.vim ~/.vim/colors/dracula.vim
-ln -sfv ${BASEDIR}/vim/colors/molokai.vim ~/.vim/colors/molokai.vim
+safe_link ${BASEDIR}/vim/.vimrc ~/.vimrc
+safe_link ${BASEDIR}/vim/colors/dracula.vim ~/.vim/colors/dracula.vim
+safe_link ${BASEDIR}/vim/colors/molokai.vim ~/.vim/colors/molokai.vim
 
 # tmux
-ln -sfv ${BASEDIR}/tmux/.tmux.conf ~/.tmux.conf
+safe_link ${BASEDIR}/tmux/.tmux.conf ~/.tmux.conf
 
 # zsh
-ln -sfv ${BASEDIR}/zsh/.zshrc ~/.zshrc
-ln -sfv ${BASEDIR}/zsh/.aliases ~/.aliases
-ln -sfv ${BASEDIR}/zsh/.dircolors ~/.dircolors
-git clone --recursive https://github.com/mgee/slimline.git "${HOME}/.zsh/plugins/slimline"
+safe_link ${BASEDIR}/zsh/.zshrc ~/.zshrc
+safe_link ${BASEDIR}/zsh/.aliases ~/.aliases
+safe_link ${BASEDIR}/zsh/.dircolors ~/.dircolors
 
 # X11
-ln -sfv ${BASEDIR}/X/.Xresources ~/.Xresources
+safe_link ${BASEDIR}/X/.Xresources ~/.Xresources
+safe_link ${BASEDIR}X/.xinitrc ~/.xinitrc
+
 xrdb -merge ~/.Xresources
-#git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 # Newsbeuter
 mkdir -p ~/.newsbeuter
-ln -sfv ${BASEDIR}/newsbeuter/config ~/.newsbeuter/config
-ln -sfv ${BASEDIR}/newsbeuter/urls ~/.newsbeuter/urls
+safe_link ${BASEDIR}/newsbeuter/config ~/.newsbeuter/config
+safe_link ${BASEDIR}/newsbeuter/urls ~/.newsbeuter/urls
 
 # elinks
-ln -sfv ${BASEDIR}/elinks/elinks.conf ~/.elinks/elinks.conf
+safe_link ${BASEDIR}/elinks/elinks.conf ~/.elinks/elinks.conf
 
 # i3
 mkdir -p ~/.i3
-ln -sfv ${BASEDIR}/i3/config ~/.i3/config
+safe_link ${BASEDIR}/i3/config ~/.i3/config
+safe_link ${BASEDIR}/i3/i3shell ~/.i3/i3shell
+safe_link ${BASEDIR}/i3/i3status ~/.i3/i3status
+
+# compton
+safe_link ${BASEDIR}/compton/compton.config ~/.config/compton.config
