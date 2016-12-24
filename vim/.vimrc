@@ -62,8 +62,8 @@ set history=10
 set undolevels=1000
 set wildignore=*.swp,*.bak,*.o
 set backspace=indent,eol,start
-set clipboard^=unnamed,unnamedplus "Use system clipboard
-nnoremap d "_d
+nnoremap p "+p              "Clipboard
+nnoremap y "+y
 
 "Window Titles
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
