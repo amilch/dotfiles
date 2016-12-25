@@ -1,5 +1,6 @@
 #query feeds
 "query:-- Unread Articles --:unread = \"yes\""
+"query:-- Product Blogs --:tags # \"products\""
 
 #infosec blogs
 http://krebsonsecurity.com/feed/ daily

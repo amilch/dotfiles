@@ -18,6 +18,10 @@ md2pdf() {
 
 alias diceware='curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | shuf -n 6 -r --random-source /dev/random'
 
+# optional defaults
+
+alias cryptsetup-default-luksformat="cryptsetup --cipher aes-xts-plain64 --key-size 512 --hash sha512 luksFormat"
+
 # USB Protection
 
 alias lock_usb="sudo sh -c \"sed -i 's/#//' /etc/udev/rules.d/10-usbblock.rules; udevadm control --reload-rules\""

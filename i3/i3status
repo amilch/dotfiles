@@ -136,13 +136,13 @@ main() {
             local disk=$(status_disk)
             local bat=$(status_bat)
             local tor=$(status_tor)
-            local apt=$(status_apt)
+            #local apt=$(status_apt)
             local vpn=$(status_vpn)
             local rss=$(status_rss)
             local gateway=$(status_gateway)
         fi
         local time=$(status_time)
-        echo ",[$gateway$rss$apt$vpn$tor$disk$bat$time]"
+        echo ",[$gateway$rss$vpn$tor$disk$bat$time]"
         sleep 1
     done
 }

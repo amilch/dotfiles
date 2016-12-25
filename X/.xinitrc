@@ -9,5 +9,6 @@
 setxkbmap us -variant altgr-intl -option 'caps:swapescape'
 
 xrdb -merge ~/.Xresources
+udiskie &
 
 exec i3

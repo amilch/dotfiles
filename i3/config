@@ -215,4 +215,4 @@ client.background       #181818
 
 # Other apps to start
 exec nm-applet
-exec transmission-gtk --minimized
+#exec transmission-gtk --minimized

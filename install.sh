@@ -33,7 +33,7 @@ safe_link ${BASEDIR}/zsh/.dircolors ~/.dircolors
 
 # X11
 safe_link ${BASEDIR}/X/.Xresources ~/.Xresources
-safe_link ${BASEDIR}X/.xinitrc ~/.xinitrc
+safe_link ${BASEDIR}/X/.xinitrc ~/.xinitrc
 
 xrdb -merge ~/.Xresources
 
