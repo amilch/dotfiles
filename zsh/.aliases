@@ -7,6 +7,8 @@ alias mount='mount | column -t'
 alias df='df -h'
 alias wget='wget --continue'
 alias speedtest='wget http://speedtest.tele2.net/100MB.zip -O /dev/null'
+alias uniproxy='sshuttle --dns -r andorra  0/0'
+alias ctags-python="ctags -R --fields=+l --languages=python --python-kinds=-iv \$(python -c \"import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))\")"
 
 # New functions
 
@@ -57,9 +59,6 @@ colortest() {
 
 # Temp Shortcuts
 
-alias signal="firejail --private=~/.chromium-apps/signal /usr/bin/chromium --app-id=bikioccmkafdpakkkcpdbppfkghcmihk"
-alias telegram="firejail --private=~/.chromium-apps/telegram /usr/bin/chromium --app=https://web.telegram.org/#/login"
-alias whatsapp="firejail --private=~/.chromium-apps/whatsapp /usr/bin/chromium --app=https://web.whatsapp.com"
 alias firefox="firejail --private=~/jail/web firefox"
 alias chromium="firejail --private=~/jail/web chromium"
 

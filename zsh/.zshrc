@@ -37,6 +37,11 @@ compinit
 promptinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# Completion Ignores
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o'
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.retry'
+
+
 # VIM mode
 bindkey -v
 export KEYTIMEOUT=1
