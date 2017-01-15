@@ -17,6 +17,7 @@ set laststatus=0
 syntax on
 color molokai
 highlight LineNr ctermbg=NONE ctermfg=59
+highlight VertSplit ctermbg=NONE ctermfg=59
 
 "Cursorline
 augroup CursorLine
@@ -70,11 +71,10 @@ autocmd VimLeave * call system("tmux rename-window 'tmux'")
 "Keybindings
 let mapleader=","
 vnoremap <C-c> "*y
-noremap <leader>d :NERDTreeToggle<CR>
 nnoremap <backspace> <NOP>
 "Windows
-nnoremap <leader>h <C-w>v<C-w>l
-nnoremap <leader>j <C-w>s<C-w>j
+nnoremap <leader>/ <C-w>v<C-w>l
+nnoremap <leader>. <C-w>s<C-w>j
 nnoremap <C-h> <C-w>h
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
@@ -88,8 +88,29 @@ autocmd VimLeave * call system("tmux setw automatic-rename")
 "nerdcommenter
 let g:NERDSpaceDelims = 1
 
+"nerdtree
+nnoremap <leader>d :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.o$', '\.d$']
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 "Pandoc
 let g:pandoc#modules#disabled = ["spell"]
 let g:pandoc#folding#fdc = 0
 let g:pandoc#syntax#conceal#use = 0
 
+"Ctags
+set tags=tags; "The semicolon makes vim search in parent dir's, too
+
+"Case SENSITIVE matching for tags
+" fun! MatchCaseTag()
+    " let ic = &ic
+    " set noic
+    " try
+        " exe 'tjump ' . expand('<cword>')
+    " finally
+       " let &ic = ic
+    " endtry
+" endfun
+" nnoremap <silent> <c-]> :call MatchCaseTag()<CR>

@@ -22,6 +22,8 @@ mkdir -p ~/.vim/bundle
 safe_link ${BASEDIR}/vim/bundle/vim-pathogen ~/.vim/bundle/vim-pathogen
 safe_link ${BASEDIR}/vim/bundle/vim-surround ~/.vim/bundle/vim-surround
 safe_link ${BASEDIR}/vim/bundle/nerdcommenter ~/.vim/bundle/nerdcommenter
+safe_link ${BASEDIR}/vim/bundle/nerdtree ~/.vim/bundle/nerdtree
+safe_link ${BASEDIR}/vim/bundle/jedi-vim ~/.vim/bundle/jedi-vim
 
 # tmux
 safe_link ${BASEDIR}/tmux/.tmux.conf ~/.tmux.conf
