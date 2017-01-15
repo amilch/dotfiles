@@ -53,6 +53,7 @@ https://feeds.feedburner.com/positiveTechnologiesResearchLab?format=xml daily
 http://andrewmohawk.com/feed/ daily
 https://pig-monkey.com/feed daily
 https://lwn.net/headlines/rss
+https://blog.filippo.io/rss/
 
 #products
 https://www.qubes-os.org/feed.xml products
@@ -64,7 +65,6 @@ https://www.systemli.org/en/atom.xml products
 https://cavallette.noblogs.org/feed products
 https://www.debian.org/security/dsa-long products
 https://www.debian.org/News/news products
-https://fedoramagazine.org/feed/ products
 https://wordpress.org/news/category/security/feed/ products "~Wordpress Security Advisory"
 https://www.cvedetails.com/vulnerability-feed.php?vendor_id=10048&product_id=0&version_id=0&orderby=3&cvssscoremin=0 products
 https://www.cvedetails.com/vulnerability-feed.php?vendor_id=10210&product_id=0&version_id=0&orderby=3&cvssscoremin=0 products
@@ -73,4 +73,13 @@ https://mullvad.net/blog/feed/rss products
 https://community.rapid7.com/community/metasploit/blog/feeds/posts daily
 https://l3net.wordpress.com/feed/ products
 https://blog.mozilla.org/security/feed/ products
-https://coreos.com/atom.xml
+https://coreos.com/atom.xml products
+https://www.postgresql.org/versions.rss products
+https://www.djangoproject.com/rss/weblog/ products
+https://matrix.org/blog/feed/ products
+https://medium.com/feed/@RiotChat products
+
+#github
+https://github.com/umap-project/Leaflet.Storage/commits/master.atom products commits
+https://github.com/umap-project/django-leaflet-storage/commits/master.atom products commits
+https://github.com/umap-project/umap/commits/master.atom products commits
